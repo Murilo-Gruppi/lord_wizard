@@ -66,7 +66,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		enemies = new ArrayList<Enemy>();
 		spell = new ArrayList<CastSpell>();
 		spritesheet = new Spritesheet("/spritesheet.png");
-		// Instanciando jogador e adicionando à entities.
+		// Instanciando jogador e adicionando Ã  entities.
 		player = new Player(0,0, 16, 16, spritesheet.getSprite(32, 0, 16, 16));
 		entities.add(player);
 		// Instanciando mundo.
@@ -110,8 +110,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		if (gameState == "NORMAL") {
 			if (this.saveGame) {
 				this.saveGame = false;
-				String[] opt1 = {"level", "life", "x", "y"};
-				int[] opt2 = {this.CUR_LEVEL, (int) player.life, player.getX(), player.getY()};
+				String[] opt1 = {"level", "life"};
+				int[] opt2 = {this.CUR_LEVEL, (int) player.life};
 				Menu.saveGame(opt1, opt2, 10);
 			}
 			this.restartGame = false;
@@ -126,7 +126,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 			}
 			
 			if (enemies.size() == 0) {
-				// Avançar para o próximo level
+				// AvanÃ§ar para o prÃ³ximo level
 				CUR_LEVEL++;
 				if (CUR_LEVEL > MAX_LEVEL) {
 					CUR_LEVEL = 1;
@@ -170,19 +170,19 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
-		/*Renderização do jogo*/
+		/*RenderizaÃ§Ã£o do jogo*/
 		world.render(g);
-		/*Renderização das entities*/
+		/*RenderizaÃ§Ã£o das entities*/
 		for (int i = 0; i < entities.size(); i++) {
 			Entity e = entities.get(i);
 			e.render(g);
 		}
-		/*Renderização do feitiço*/
+		/*RenderizaÃ§Ã£o do feitiÃ§o*/
 		for (int i = 0; i < spell.size(); i++) {
 			CastSpell e = spell.get(i);
 			e.render(g);
 		}
-		/*Renderização das barras de vida e mana*/
+		/*RenderizaÃ§Ã£o das barras de vida e mana*/
 		ui.render(g);
 		/***/
 		g.dispose();
